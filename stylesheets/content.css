@@ -160,7 +160,6 @@
 	background: transparent;
 }
 
-#content .atomentry .title .comment_count { color: #eee; display: none; }
 
 #content .atomentry .author {
 	color: #bbb;
@@ -240,6 +239,7 @@
 
 #content .atomentry .comments-counter a {
   text-decoration: none;
+  padding: 10px;
 }
 
 
