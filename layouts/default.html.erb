@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link rel="openid.server" href="http://www.myopenid.com/server" />
+  <link rel="openid.delegate" href="http://kuzmanya.myopenid.com/" />
+  <meta http-equiv="X-XRDS-Location" content="http://kuzmanya.myopenid.com/xrds" />
+  <title><%=h page_title %></title>
+  <%= page_header %>
+  <%= stylesheet_link_tag '/stylesheets/theme/application.css', :media => 'all' %>
+</head>
+
+<body>
+<div id="container">
+  <div id="header">
+    <h1><a href="<%= this_blog.base_url%>"><img src="/images/theme/logo.png" /></a><span><%= link_to this_blog.blog_name, this_blog.base_url %></span></h1>
+    <h2><%= this_blog.blog_subtitle %></h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <%= @content_for_layout %>
+      <%= javascript_tag 'show_dates_as_local_time()' %>
+    </div>
+
+    <div id="sidebar">
+      <div id="book">
+       <a href="http://absinfo.ru"> <img width="166" height="168" src="/images/theme/absinfo.png" alt="absinfo project">
+       </a>      
+      </div>
+      <!-- sidebar components -->
+      <%= render_sidebars %>
+    </div>
+    <br style="clear:both;" />
+  </div>
+
+  <div id="footer">
+    <div class="transparency">
+      <p><%= link_to this_blog.blog_name, this_blog.base_url %></p>
+      <ul>
+        <li>
+          <%= _("Powered by %s", link_to('typo', 'http://typosphere.org')) %> /
+          <%= _("Design by %s", link_to('Andrey Moskovskiy', 'http://laylaylalalay.com')) %>
+        </li>
+      </ul>
+      </div>
+  </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+	if(links[i].href.indexOf('#disqus_thread') >= 0) {
+		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+	}
+	}
+	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/nya-ru/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+</body>
+</html>
