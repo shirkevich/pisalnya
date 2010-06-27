@@ -5,7 +5,9 @@
   </h2>
 
   <p class="author">
-    <abbr class="published" title="<%= article.published_at.xmlschema %>"><%= js_distance_of_time_in_words_to_now article.published_at %></abbr>
+    <%= content_tag(:span, category_links(article), :class => 'categories') unless article.categories.empty? %>&nbsp;
+    <!--abbr class="published" title="<%#= article.published_at.xmlschema %>"><%#= js_distance_of_time_in_words_to_now article.published_at %></abbr -->
+    <abbr class="published" title="<%= article.published_at.xmlschema %>"><%= _(article.published_at.utc.strftime(_("%%a, %%d %%b %%Y %%H:%%M", article.published_at.utc))) %>
   </p>
 
   <div class="content">
@@ -14,7 +16,7 @@
     <% if article.extended? -%>
       <div class="extended">
         <% if controller.action_name == 'index' || controller.action_name != 'redirect' -%>
-          <p><%= link_to_permalink article, _("Continue reading...") %><img src="/images/theme/arrow-continue.png" /></p>
+          <p><%= link_to_permalink article, _("Continue reading...") %>&nbsp;<img src="/images/theme/arrow-continue.png" /></p>
         <% else -%>
           <%= article.html(:extended) %>
         <% end -%>
@@ -23,9 +25,8 @@
   </div>
 
   <ul class="meta">
-    <%= content_tag(:li, category_links(article), :class => 'categories') unless article.categories.empty? %>
     <%= content_tag(:li, tag_links(article), :class => 'tags') unless article.tags.empty? %>
-    <% if controller.action_name == 'index' %>
+    <% unless controller.action_name == 'redirect' %>
     <li class="comments-counter">
     <% if  article.allow_comments? %>
     <a href="<%= article.permalink_url + '#disqus_thread' %>"><%= article.published_comments.size %></a> 
@@ -33,4 +34,10 @@
     </li>
     <% end %>
   </ul>
+  
+<% unless controller.action_name == 'redirect' %>
+  <img class="devider" src="/images/theme/devider.gif" align="left" />
+<% end %>
 </div>
+
+

@@ -131,7 +131,12 @@
 
 /* Article Entries - class names based on http://microformats.org/wiki/hatom] */
 #content .atomentry { 
-	margin: 0 0 3em 0;
+	margin: 0 0 6em 0;
+}
+
+#content .devider {
+  float: left;
+  margin-top: 1em;
 }
 
 #content .atomentry .title {
@@ -162,7 +167,7 @@
 	font: normal 16px/14px "georgia", "lucida grande", arial, verdana, sans-serif;
 	font-style: italic;
 	letter-spacing: -1px;
-	margin: 0 0 1em;
+	margin: 0.3em 0 1em;
 }
 
 #content .atomentry .author cite a,
@@ -179,22 +184,28 @@
 #content .atomentry .content {}
 
 #content .atomentry ul.meta { 
-	font-size: 13px;
-		margin: 12px; padding: 5px;
-		list-style-type: none;
+  font-size: 13px;
+  margin: 12px; 
+  padding: 5px;
+  list-style-type: none;
+  display: inline;
 }
 
 #content .atomentry .meta li { 
-	line-height: 18px;
-	margin: 0; padding: 0;
-	width: 70%;
-	float: left;
-		
+  line-height: 2.1em;
+  margin: 0; padding: 0;
+  width: 70%;
+  float: left;
 }
 
-#content .atomentry .meta .categories { 
+.author .categories a {
   width: 23%;
   font-style: italic;
+  color: #aaa;
+}
+
+.author .categories a:hover { 
+  color: #fff;
 }
 
 #content .atomentry .meta .comments-counter { 
@@ -207,20 +218,25 @@
 }
 
 
+#content .tags a {
+  background: #d9f8f1; 
+  padding: 3px;
+  margin: 1px;
+}
+
+
 #content .atomentry .meta a:link,
+#content .atomentry .meta a:active,
 #content .atomentry .meta a:visited {
-	color: #000;
+  color: #000;
+  text-decoration: none;
 }
 
-#content .tags a:link {
-  background: #41dbb8; 
+#content .atomentry .meta a:hover {
+  background: #000;
+  color: #fff;
 }
 
-
-#content .atomentry .meta a:hover,
-#content .atomentry .meta a:active  {
-	color: #fff;
-}
 
 #content .atomentry .comments-counter a {
   text-decoration: none;
@@ -300,23 +316,30 @@
 
 #content .pagination {
   margin: 5px 5px;
+  padding-top: 10px;
 }
 
-#content .prev_page {
-  background-image: url(/images/theme/arrow-left.png);
+#content .pagination a {
+  padding: 10px 4px 4px 4px;
+  display: block;
+  float: left;
+}
+
+#content .pagination span { 
+  display: block;
+  float: left;
+  padding: 10px 4px 4px 4px;
+}
+
+#content .pagination .current {
+  background: url(/images/theme/back-pgnumber.png);
   background-repeat: no-repeat;
-  background-position: center;
-}
-
-#content .next_page {
-  background-image: url(/images/theme/arrow-right.png);
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-#content .current {
-  background-image: url(/images/theme/back-pgnumber.png);
-  padding: 10px 13px 17px 13px;
+  background-position: 0px 0px;
+  /* padding: 10px 13px 17px 13px; */
+  font-weight: bold;
+  text-align: center;
+  width: 24px;
+  height: 30px;
 }
 /*--------------------------------------------------------------
  Sidebar
